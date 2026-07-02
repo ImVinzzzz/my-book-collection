@@ -69,4 +69,17 @@ export interface Book {
   favorite?: boolean;
   /** Indica se questo libro è già stato letto */
   read: boolean;
+  /** Posizione del libro in biblioteca (opzionale) */
+  posizione?: PosizioneLibro;
 }
+
+/** Rappresenta la posizione fisica di un libro nell'archivio. */
+export interface PosizioneLibro {
+  /** Stanza: sigla di tre lettere */
+  stanza: string;
+  /** Scaffale: numero a 2 cifre con 0 iniziale */
+  scaffale: string;
+  /** Ripiano: 1 lettera */
+  ripiano: string;
+}
+
