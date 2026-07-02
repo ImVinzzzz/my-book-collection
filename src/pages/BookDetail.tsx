@@ -132,18 +132,42 @@ export default function BookDetail(): ReactElement {
             <p className="mt-3 leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
           </section>
 
-          {/* Scheda rapida */}
-          <aside className="h-fit rounded-xl border border-[#4A3526] bg-[#241A12] p-5">
-            <h2 className="font-display text-base font-bold text-[#F2E9DC]">Scheda rapida</h2>
-            <ul className="mt-4 flex flex-col gap-3">
-              {metaItems.map((item) => (
-                <li key={item.label} className="flex items-center gap-3 text-sm text-[#D9CBB8]">
-                  <i className={`${item.icon} w-4 text-[#3FA796]`} aria-hidden="true" />
-                  {item.label}
-                </li>
-              ))}
-            </ul>
-          </aside>
+          {/* Colonna Destra (Scheda rapida e Posizione) */}
+          <div className="flex flex-col gap-6">
+            {/* Scheda rapida */}
+            <aside className="h-fit rounded-xl border border-[#4A3526] bg-[#241A12] p-5">
+              <h2 className="font-display text-base font-bold text-[#F2E9DC]">Scheda rapida</h2>
+              <ul className="mt-4 flex flex-col gap-3">
+                {metaItems.map((item) => (
+                  <li key={item.label} className="flex items-center gap-3 text-sm text-[#D9CBB8]">
+                    <i className={`${item.icon} w-4 text-[#3FA796]`} aria-hidden="true" />
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+
+            {/* Posizione */}
+            {book.posizione && (
+              <aside className="h-fit rounded-xl border border-[#4A3526] bg-[#241A12] p-5">
+                <h2 className="font-display text-base font-bold text-[#F2E9DC]">Posizione</h2>
+                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
+                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Stanza</div>
+                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.stanza}</div>
+                  </div>
+                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
+                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Scaffale</div>
+                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.scaffale}</div>
+                  </div>
+                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
+                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Ripiano</div>
+                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.ripiano}</div>
+                  </div>
+                </div>
+              </aside>
+            )}
+          </div>
         </div>
 
         {/* Note: box facoltativo, mostrato solo se c'è qualcosa da segnalare */}
