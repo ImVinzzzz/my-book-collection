@@ -24,7 +24,7 @@ export const books: Book[] = [
   publicationYear: "2020",
   synopsis: "L'universo di Star Trek a confronto con quello reale: che cosa c'è di scientificamente possibile (e cosa, invece, di assurdo) nelle avventure di una delle saghe fantascientifiche più amate di sempre? In che misura la fantascienza può prefigurare la scienza del futuro? Appassionato di Star Trek , al pari di molti altri fisici famosi, Lawrence Krauss ha deciso di «seguire» la mitica astronave Enterprise, in missione permanente nella Galassia, per esplorare gli affascinanti misteri dell'universo, spiegando la fisica di oggi e tentando di prevedere la fisica di domani. La presente edizione è stata completamente rivista e aggiornata dall'autore: «Negli anni passati da allora non è solo continuata l'epopea di Star Trek, ma anche il mondo della scienza ha fatto grandi passi avanti, e io mi azzarderei a dire che la scienza abbia progredito più di Star Trek. Nel tentativo di aggiornare la scienza in questa nuova edizione del libro, ho deciso di rivederne l'intero contenuto, aggiungendo nuove informazioni dov'era necessario ed eliminando argomentazioni di cui la natura ha nel frattempo dimostrato l'erroneità.»  Prefazione di Stephen Hawking.",
   rating: 3,
-  notes: "Titolo originale: The physics of Star Trek \\n\nEAN: 9788850258932",
+  notes: "Prefazione di Stephen Hawking. \n Titolo originale: The physics of Star Trek \nEAN: 9788850258932".
   favorite: false,
   read: true,
   },
