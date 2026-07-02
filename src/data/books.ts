@@ -12,6 +12,27 @@ import type { Book } from '../types';
  */
 export const books: Book[] = [
   {
+    id: "poirot-tutti-i-racconti",
+    slug: "poirot-tutti-i-racconti",
+    title: "Poirot. Tutti i racconti",
+    authorSlug: "agatha-christie",
+    coverImageUrl: "/images/books/poirot-tutti-i-racconti.jpg",
+    genre: "Giallo",
+    tags: ["Poirot", "Giallo"],
+    publisher: "Mondadori",
+    publicationYear: "2020",
+    synopsis: "Tutte le avvincenti indagini di Hercule Poirot, il piccolo detective belga dalle infallibili \"celluline grigie\", nato dalla fantasia di Agatha Christie sono qui raccolte in un unico volume nel quale la vocazione narrativa della Regina del Giallo si esprime al suo meglio: storie che coinvolgono il pubblico in un raffinatissimo gioco di intelligenza accompagnate da raffinate illustrazioni d'epoca in bianco e nero.",
+    rating: 5,
+    notes: "Collana: Oscar draghi\nTitolo originale: Hercule Poirot: the complete short stories\nEAN: 9788804727965",
+    favorite: true,
+    read: true,
+    posizione: {
+      stanza: "CAM",
+      scaffale: "01",
+      ripiano: "D",
+    },
+  },
+  {
     id: "la-fisica-di-star-trek",
     slug: "la-fisica-di-star-trek",
     title: "La fisica di Star Trek",
@@ -28,7 +49,7 @@ export const books: Book[] = [
     favorite: false,
     read: true,
     posizione: {
-      stanza: "SOG",
+      stanza: "CAM",
       scaffale: "02",
       ripiano: "C"
     }
