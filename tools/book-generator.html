@@ -117,6 +117,24 @@
             </div>
           </div>
 
+          <div class="border-t border-[#4A3526]/50 pt-4">
+            <h3 class="text-sm font-semibold text-[#3FA796] mb-3">Posizione in biblioteca</h3>
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold mb-1" for="stanza">Stanza (3 lettere)</label>
+                <input id="stanza" type="text" maxlength="3" class="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]" placeholder="es. SOG" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1" for="scaffale">Scaffale (2 cifre con 0)</label>
+                <input id="scaffale" type="text" maxlength="2" class="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]" placeholder="es. 03" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1" for="ripiano">Ripiano (1 lettera)</label>
+                <input id="ripiano" type="text" maxlength="1" class="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]" placeholder="es. A" />
+              </div>
+            </div>
+          </div>
+
           <div>
             <label class="block text-sm font-semibold mb-1">Classificazione *</label>
             <div class="flex items-center gap-3">
@@ -412,6 +430,27 @@
         const read = document.getElementById('read').checked;
         const authorSlug = slugify(authorName);
 
+        // Posizione
+        const stanza = document.getElementById('stanza').value.trim().toUpperCase();
+        const scaffale = document.getElementById('scaffale').value.trim();
+        const ripiano = document.getElementById('ripiano').value.trim().toUpperCase();
+
+        const hasPosizione = stanza || scaffale || ripiano;
+        if (hasPosizione) {
+          if (stanza && !/^[A-Z]{3}$/.test(stanza)) {
+            alert('La stanza deve essere composta esattamente da 3 lettere.');
+            return;
+          }
+          if (scaffale && !/^\d{2}$/.test(scaffale)) {
+            alert('Lo scaffale deve essere composto da 2 cifre con eventuale 0 iniziale (es: 03).');
+            return;
+          }
+          if (ripiano && !/^[A-Z]$/.test(ripiano)) {
+            alert('Il ripiano deve essere una singola lettera.');
+            return;
+          }
+        }
+
         const lines = [
           `id: ${tsString(id)},`,
           `slug: ${tsString(slug)},`,
@@ -429,6 +468,14 @@
         if (notes) lines.push(`notes: ${tsString(notes)},`);
         lines.push(`favorite: ${favorite},`);
         lines.push(`read: ${read},`);
+
+        if (hasPosizione) {
+          const posLines = [];
+          if (stanza) posLines.push(`stanza: ${tsString(stanza)},`);
+          if (scaffale) posLines.push(`scaffale: ${tsString(scaffale)},`);
+          if (ripiano) posLines.push(`ripiano: ${tsString(ripiano)},`);
+          lines.push(`posizione: {\n${indentBlock(posLines.join('\n'), 2)}\n},`);
+        }
 
         const code = '{\n' + indentBlock(lines.join('\n'), 2) + '\n},';
         showOutput(code);
