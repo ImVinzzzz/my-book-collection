@@ -42,7 +42,7 @@ export const books: Book[] = [
   tags: ["Miss Murple", "Giallo"],
   publisher: "Mondadori",
   publicationYear: "2021",
-  synopsis: "«Davvero, non ho alcun dono, se non forse una certa conoscenza della natura umana.»\nTutti i racconti che vedono come protagonista Miss Marple, la dolce, un po' svagata anziana signora della provincia inglese che risolve con acume i delitti più misteriosi, sono racchiusi in questo libro dal formato importante nel quale la vocazione narrativa della Regina del Giallo si esprime al suo meglio.",
+  synopsis: "«Davvero, non ho alcun dono, se non forse una certa conoscenza della natura umana.» \nTutti i racconti che vedono come protagonista Miss Marple, la dolce, un po' svagata anziana signora della provincia inglese che risolve con acume i delitti più misteriosi, sono racchiusi in questo libro dal formato importante nel quale la vocazione narrativa della Regina del Giallo si esprime al suo meglio.",
   rating: 5,
   notes: "Collana: Oscar draghi\nEAN: 9788804739968",
   favorite: true,
