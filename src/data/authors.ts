@@ -10,7 +10,7 @@ export const authors: Author[] = [
   id: "lawrence-m-krauss",
   slug: "lawrence-m-krauss",
   name: "Lawrence M. Krauss",
-  bio: "Lawrence Maxwell Krauss, conosciuto anche come Lawrence M. Krauss (New York, 27 maggio 1954), è un fisico, astronomo e saggista statunitense. È professore in pensione (dal 2019) di fisica, di astronomia ed ex direttore del dipartimento di fisica alla Case Western Reserve University. Ha insegnato fino al 2018 alla Arizona State University. Krauss è anche un rappresentante del movimento filosofico del nuovo ateismo.",
+  bio: "Lawrence Maxwell Krauss, conosciuto anche come Lawrence M. Krauss (New York, 27 maggio 1954), è un fisico, astronomo e saggista statunitense. È professore in pensione (dal 2019) di fisica, di astronomia ed ex direttore del dipartimento di fisica alla Case Western Reserve University. Ha insegnato fino al 2018 alla Arizona State University.",
   photoUrl: "/images/authors/lawrence-m-krauss.jpg",
   },
   {
