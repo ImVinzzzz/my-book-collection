@@ -19,6 +19,8 @@ export default function Home(): ReactElement {
   const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
   const [minRating, setMinRating] = useState(0);
   const [readFilter, setReadFilter] = useState<ReadFilter>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
 
   // Mappa slug -> nome autore, per non dover cercare nell'array a ogni card.
   const authorNameBySlug = useMemo(() => {
@@ -44,6 +46,9 @@ export default function Home(): ReactElement {
 
   const filteredBooks = useMemo(() => {
     return books.filter((book) => {
+      const matchesSearch =
+        searchQuery.trim() === "" ||
+        book.title.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesGenre = selectedGenre === null || book.genre === selectedGenre;
       // I tag selezionati sono in OR tra loro: basta che il libro abbia
       // almeno uno dei tag spuntati per comparire nei risultati.
@@ -55,9 +60,9 @@ export default function Home(): ReactElement {
         readFilter === 'all' ||
         (readFilter === 'read' && book.read) ||
         (readFilter === 'unread' && !book.read);
-      return matchesGenre && matchesTags && matchesAuthor && matchesRating && matchesRead;
+      return matchesSearch && matchesGenre && matchesTags && matchesAuthor && matchesRating && matchesRead;
     });
-  }, [selectedGenre, selectedTags, selectedAuthorSlug, minRating, readFilter]);
+  }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, minRating, readFilter]);
 
   function toggleTag(tag: string): void {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((item) => item !== tag) : [...prev, tag]));
@@ -69,6 +74,7 @@ export default function Home(): ReactElement {
     setSelectedAuthorSlug(null);
     setMinRating(0);
     setReadFilter('all');
+    setSearchQuery("");
   }
 
   return (
@@ -91,8 +97,33 @@ export default function Home(): ReactElement {
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-10 sm:py-14">
-        {/* Filtri: mostrati solo se c'è almeno un libro in archivio */}
+        {/* Barra di controllo: Bottone Filtri & Ricerca per Titolo */}
         {books.length > 0 && (
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <button
+              type="button"
+              onClick={() => setShowFilters(!showFilters)}
+              className="inline-flex items-center gap-2 rounded-lg bg-[#241A12] px-4 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
+            >
+              <i className={`fa-solid ${showFilters ? 'fa-filter-circle-xmark' : 'fa-filter'} text-[#3FA796]`} aria-hidden="true" />
+              {showFilters ? 'Nascondi filtri' : 'Mostra filtri'}
+            </button>
+
+            <div className="relative w-full sm:max-w-xs">
+              <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#8A7765]" aria-hidden="true" />
+              <input
+                type="text"
+                placeholder="Cerca per titolo..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-lg border border-[#4A3526] bg-[#241A12] py-2 pl-9 pr-4 text-sm text-[#F2E9DC] placeholder-[#8A7765] focus:border-[#3FA796] focus:outline-none transition"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Filtri: mostrati solo se c'è almeno un libro in archivio e showFilters è true */}
+        {books.length > 0 && showFilters && (
           <div className="mb-8">
             <FilterBar
               genres={genres}
