@@ -5,6 +5,7 @@ import { authors } from '../data/authors';
 import BookCard from '../components/BookCard';
 import FilterBar from '../components/FilterBar';
 import type { ReadFilter, AuthorOption } from '../components/FilterBar';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 /**
  * Pagina principale: intestazione dell'archivio + filtri + griglia
@@ -144,7 +145,7 @@ export default function Home(): ReactElement {
           </div>
         )}
 
-        {/* Griglia libri */}
+        {/* Elenco libri a stack orizzontale */}
         {books.length === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-xl border border-dashed border-[#4A3526] py-16 text-center text-[#8A7765]">
             <i className="fa-solid fa-box-archive text-3xl" aria-hidden="true" />
@@ -157,7 +158,7 @@ export default function Home(): ReactElement {
             </p>
           </div>
         ) : filteredBooks.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-6">
             {filteredBooks.map((book) => (
               <BookCard
                 key={book.id}
@@ -181,6 +182,9 @@ export default function Home(): ReactElement {
           </div>
         )}
       </main>
+
+      {/* Bottone Torna in Cima */}
+      <ScrollToTopButton />
     </div>
   );
 }
