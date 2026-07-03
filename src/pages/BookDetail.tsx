@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { books } from '../data/books';
 import { authors } from '../data/authors';
 import Tag from '../components/Tag';
@@ -129,7 +130,9 @@ export default function BookDetail(): ReactElement {
           {/* Sinossi */}
           <section>
             <h2 className="font-display text-xl font-bold text-[#F2E9DC]">Sinossi</h2>
-            <p className="mt-3 leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
+            <div className="mt-3 leading-relaxed text-[#D9CBB8] whitespace-pre-line prose prose-invert">
+              <ReactMarkdown>{book.synopsis}</ReactMarkdown>
+            </div>
           </section>
 
           {/* Colonna Destra (Scheda rapida e Posizione) */}
