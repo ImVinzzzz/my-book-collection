@@ -34,4 +34,11 @@ export const authors: Author[] = [
     bio: "Autore di fantascienza di origine tedesca, naturalizzato italiano. Le sue opere esplorano i confini tra intelligenza artificiale ed etica, spesso ambientate in colonie spaziali ai margini del sistema solare.",
     photoUrl: '',
   },
+  {
+    id: "j-k-rowling",
+    slug: "j-k-rowling",
+    name: "J.K. Rowling",
+    bio: "J.K. Rowling is the author of the enduringly popular, era-defining Harry Potter book series, as well as several stand-alone novels for adults and children, and a bestselling crime fiction series written under the pen name Robert Galbraith.",
+    photoUrl: "/images/authors/j-k-rowling.jpg",
+  },
 ];
