@@ -36,16 +36,16 @@ function getSealIcon(genre: string): string {
  * HTML valido. Il link cliccabile all'autore vive in BookDetail.
  */
 export default function BookCard({ book, authorName }: BookCardProps): ReactElement {
-  const visibleTags = book.tags.slice(0, 2);
+  const visibleTags = book.tags.slice(0, 3);
   const extraTagsCount = book.tags.length - visibleTags.length;
 
   return (
     <Link
       to={`/libro/${book.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"
+      className="group relative flex flex-col sm:flex-row overflow-hidden rounded-2xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"
     >
-      {/* Copertina (o segnaposto se assente): formato verticale 2:3, come una vera copertina */}
-      <div className="relative aspect-[2/3] w-full overflow-hidden">
+      {/* Copertina a sinistra (su schermi sm in poi) */}
+      <div className="relative aspect-[2/3] w-full sm:w-48 flex-shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r border-[#4A3526]">
         {book.coverImageUrl ? (
           <img
             src={book.coverImageUrl}
@@ -53,12 +53,12 @@ export default function BookCard({ book, authorName }: BookCardProps): ReactElem
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#1C1410] text-[#5C4A38]">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#1C1410] text-[#5C4A38] min-h-[200px]">
             <i className="fa-solid fa-book text-4xl" aria-hidden="true" />
             <span className="font-display text-xs text-[#8A7765]">Copertina non disponibile</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#120D0A] via-[#120D0A]/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#120D0A]/30 via-transparent to-transparent" />
 
         {book.favorite && (
           <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[#E84855]/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
@@ -68,41 +68,43 @@ export default function BookCard({ book, authorName }: BookCardProps): ReactElem
         )}
 
         {/* Sigillo con l'icona del genere */}
-        <div className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full bg-[#120D0A]/80 text-[#6FC9BB] shadow-md ring-2 ring-[#3FA796]/70 backdrop-blur-sm">
-          <i className={`${getSealIcon(book.genre)} text-base`} aria-hidden="true" />
+        <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#120D0A]/80 text-[#6FC9BB] shadow-md ring-2 ring-[#3FA796]/70 backdrop-blur-sm">
+          <i className={`${getSealIcon(book.genre)} text-sm`} aria-hidden="true" />
         </div>
       </div>
 
-      {/* Contenuto testuale */}
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <div>
-          <h3 className="font-display text-lg font-bold leading-snug text-[#F2E9DC] group-hover:text-white">
-            {book.title}
-          </h3>
-          {book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
-          <p className="mt-1 text-xs text-[#8A7765]">{authorName}</p>
+      {/* Contenuto testuale a destra */}
+      <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <h3 className="font-display text-xl font-bold leading-snug text-[#F2E9DC] group-hover:text-white">
+              {book.title}
+            </h3>
+            {book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
+            <p className="mt-1 text-xs text-[#8A7765]">di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
+          </div>
+
+          <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
         </div>
 
-        {/* line-clamp è incluso di default da Tailwind v3.3+; su versioni
-            precedenti serve il plugin @tailwindcss/line-clamp */}
-        <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <Tag label={book.genre} variant="genre" />
+            {visibleTags.map((tag) => (
+              <Tag key={tag} label={tag} variant="tag" />
+            ))}
+            {extraTagsCount > 0 && (
+              <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
+            )}
+          </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <Tag label={book.genre} variant="genre" />
-          {visibleTags.map((tag) => (
-            <Tag key={tag} label={tag} variant="tag" />
-          ))}
-          {extraTagsCount > 0 && (
-            <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
-          )}
-        </div>
-
-        <div className="mt-auto flex items-center justify-between pt-2">
-          <StarRating rating={book.rating} />
-          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
-            Apri la scheda
-            <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
-          </span>
+          <div className="flex items-center justify-between border-t border-[#4A3526]/50 pt-3">
+            <StarRating rating={book.rating} />
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
+              Apri la scheda
+              <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
+            </span>
+          </div>
         </div>
       </div>
     </Link>
