@@ -81,7 +81,7 @@ export const books: Book[] = [
     title: "Harry Potter",
     subtitle: "Edizione Corvonero. La serie completa.",
     authorSlug: "j-k-rowling",
-    coverImageUrl: "/images/books/harry-pottercc.jpg",
+    coverImageUrl: "/images/books/harry-potter4.jpg",
     genre: "Fantasy",
     tags: ["Harry Potter", "fantasy", "ragazzi"],
     publisher: "Salani",
