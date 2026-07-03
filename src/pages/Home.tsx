@@ -84,7 +84,7 @@ export default function Home(): ReactElement {
       <header className="border-b border-[#4A3526] bg-[#120D0A]">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 sm:py-14">
           <div className="flex items-center gap-3 text-[#3FA796]">
-            <i className="fa-solid fa-books text-2xl" aria-hidden="true" />
+            <i className="fa-solid fa-book text-2xl" aria-hidden="true" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em]">
               La mia libreria personale
             </span>
