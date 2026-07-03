@@ -128,41 +128,44 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Filtro per classificazione minima */}
-      <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-          Classificazione
-        </span>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => onMinRatingChange(0)} className={chipClasses(minRating === 0)} aria-pressed={minRating === 0}>
-            Tutte
-          </button>
-          {RATING_OPTIONS.map((value) => (
-            <button key={value} type="button" onClick={() => onMinRatingChange(value)} className={chipClasses(minRating === value)} aria-pressed={minRating === value}>
-              <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
-              {value}+
+      {/* Righe classificazione e letto unite in colonne */}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {/* Filtro per classificazione minima */}
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
+            Classificazione
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={() => onMinRatingChange(0)} className={chipClasses(minRating === 0)} aria-pressed={minRating === 0}>
+              Tutte
             </button>
-          ))}
+            {RATING_OPTIONS.map((value) => (
+              <button key={value} type="button" onClick={() => onMinRatingChange(value)} className={chipClasses(minRating === value)} aria-pressed={minRating === value}>
+                <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
+                {value}+
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Filtro per stato "letto" */}
-      <div className="flex flex-col gap-2">
-        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-          Letto
-        </span>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
-            Tutti
-          </button>
-          <button type="button" onClick={() => onReadFilterChange('read')} className={chipClasses(readFilter === 'read')} aria-pressed={readFilter === 'read'}>
-            <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
-            Letti
-          </button>
-          <button type="button" onClick={() => onReadFilterChange('unread')} className={chipClasses(readFilter === 'unread')} aria-pressed={readFilter === 'unread'}>
-            <i className="fa-solid fa-bookmark text-[0.7rem]" aria-hidden="true" />
-            Da leggere
-          </button>
+        {/* Filtro per stato "letto" */}
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
+            Letto
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
+              Tutti
+            </button>
+            <button type="button" onClick={() => onReadFilterChange('read')} className={chipClasses(readFilter === 'read')} aria-pressed={readFilter === 'read'}>
+              <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
+              Letti
+            </button>
+            <button type="button" onClick={() => onReadFilterChange('unread')} className={chipClasses(readFilter === 'unread')} aria-pressed={readFilter === 'unread'}>
+              <i className="fa-solid fa-bookmark text-[0.7rem]" aria-hidden="true" />
+              Da leggere
+            </button>
+          </div>
         </div>
       </div>
 
