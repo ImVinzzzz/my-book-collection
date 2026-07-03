@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { authors } from '../data/authors';
 import { books } from '../data/books';
 import BookCard from '../components/BookCard';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 /**
  * Scheda di dettaglio di un autore: foto/bio + elenco dei suoi libri
@@ -79,7 +80,7 @@ export default function AuthorDetail(): ReactElement {
         </h2>
 
         {authorBooks.length > 0 ? (
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 flex flex-col gap-6">
             {authorBooks.map((book) => (
               <BookCard key={book.id} book={book} authorName={author.name} />
             ))}
@@ -91,6 +92,9 @@ export default function AuthorDetail(): ReactElement {
           </div>
         )}
       </main>
+
+      {/* Bottone Torna in Cima */}
+      <ScrollToTopButton />
     </div>
   );
 }

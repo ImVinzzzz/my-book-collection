@@ -5,6 +5,7 @@ import { books } from '../data/books';
 import { authors } from '../data/authors';
 import Tag from '../components/Tag';
 import StarRating from '../components/StarRating';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 interface MetaItem {
   icon: string;
@@ -184,6 +185,9 @@ export default function BookDetail(): ReactElement {
           </section>
         )}
       </main>
+
+      {/* Bottone Torna in Cima */}
+      <ScrollToTopButton />
     </div>
   );
 }
