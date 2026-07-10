@@ -63,6 +63,13 @@ export default function Home(): ReactElement {
     }).sort((a, b) => a.title.localeCompare(b.title));
   }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, readFilter]);
 
+  const isAnyFilterActive =
+    selectedGenre !== null ||
+    selectedTags.length > 0 ||
+    selectedAuthorSlug !== null ||
+    readFilter !== "all" ||
+    searchQuery.trim() !== "";
+
   function toggleTag(tag: string): void {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((item) => item !== tag) : [...prev, tag]));
   }
@@ -98,14 +105,20 @@ export default function Home(): ReactElement {
         {/* Barra di controllo: Bottone Filtri & Ricerca per Titolo */}
         {books.length > 0 && (
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <button
-              type="button"
-              onClick={() => setShowFilters(!showFilters)}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#241A12] px-4 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
-            >
-              <i className={`fa-solid ${showFilters ? 'fa-filter-circle-xmark' : 'fa-filter'} text-[#3FA796]`} aria-hidden="true" />
-              {showFilters ? 'Nascondi filtri' : 'Mostra filtri'}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setShowFilters(!showFilters)}
+                className="inline-flex items-center gap-2 rounded-lg bg-[#241A12] px-4 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
+              >
+                <i className={`fa-solid ${showFilters ? 'fa-filter-circle-xmark' : 'fa-filter'} text-[#3FA796]`} aria-hidden="true" />
+                {showFilters ? 'Nascondi filtri' : 'Mostra filtri'}
+              </button>
+
+              <span className="inline-flex items-center rounded-full bg-[#241A12] px-3 py-1 text-xs font-semibold text-[#B8A691] border border-[#4A3526]">
+                {isAnyFilterActive ? filteredBooks.length + " su " + books.length : books.length + " libri"}
+              </span>
+            </div>
 
             <div className="relative w-full sm:max-w-xs">
               <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#8A7765]" aria-hidden="true" />
