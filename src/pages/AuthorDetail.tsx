@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { authors } from '../data/authors';
 import { books } from '../data/books';
-import BookCard from '../components/BookCard';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 /**
@@ -35,7 +34,9 @@ export default function AuthorDetail(): ReactElement {
     );
   }
 
-  const authorBooks = books.filter((book) => book.authorSlug === author.slug);
+  const authorBooks = books
+    .filter((book) => book.authorSlug === author.slug)
+    .sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className="min-h-screen bg-[#1C1410] text-[#F2E9DC]">
@@ -80,9 +81,42 @@ export default function AuthorDetail(): ReactElement {
         </h2>
 
         {authorBooks.length > 0 ? (
-          <div className="mt-6 flex flex-col gap-6">
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {authorBooks.map((book) => (
-              <BookCard key={book.id} book={book} authorName={author.name} />
+              <Link
+                key={book.id}
+                to={"/libro/" + book.slug}
+                className="group relative flex flex-col overflow-hidden rounded-xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"
+              >
+                {/* Titolo sopra */}
+                <div className="p-3 text-center border-b border-[#4A3526]/50 min-h-[56px] flex items-center justify-center bg-[#1C1410]/50">
+                  <h3 className="font-display text-xs font-bold leading-snug text-[#F2E9DC] group-hover:text-[#3FA796] transition-colors line-clamp-2">
+                    {book.title}
+                  </h3>
+                </div>
+
+                {/* Copertina sotto */}
+                <div className="relative aspect-[2/3] w-full overflow-hidden">
+                  {book.coverImageUrl ? (
+                    <img
+                      src={book.coverImageUrl}
+                      alt={"Copertina di " + book.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#241A12] text-[#5C4A38]">
+                      <i className="fa-solid fa-book text-2xl" aria-hidden="true" />
+                      <span className="font-display text-[9px] text-[#8A7765]">Copertina non disponibile</span>
+                    </div>
+                  )}
+                  {book.favorite && (
+                    <span className="absolute left-2 top-2 inline-flex items-center gap-0.5 rounded-full bg-[#E84855]/95 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-md">
+                      <i className="fa-solid fa-heart text-[0.55rem]" aria-hidden="true" />
+                      Fav
+                    </span>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
         ) : (

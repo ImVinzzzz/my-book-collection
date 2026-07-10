@@ -60,7 +60,7 @@ export default function Home(): ReactElement {
         (readFilter === 'read' && book.read) ||
         (readFilter === 'unread' && !book.read);
       return matchesSearch && matchesGenre && matchesTags && matchesAuthor && matchesRead;
-    });
+    }).sort((a, b) => a.title.localeCompare(b.title));
   }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, readFilter]);
 
   function toggleTag(tag: string): void {
