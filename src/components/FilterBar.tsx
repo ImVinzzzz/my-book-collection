@@ -20,14 +20,11 @@ interface FilterBarProps {
   selectedTags: string[];
   /** Slug dell'autore selezionato; null = "Tutti" */
   selectedAuthorSlug: string | null;
-  /** Valutazione minima richiesta; 0 = "Tutte" */
-  minRating: number;
   /** Filtro sullo stato "letto" */
   readFilter: ReadFilter;
   onGenreChange: (genre: string | null) => void;
   onTagToggle: (tag: string) => void;
   onAuthorChange: (slug: string | null) => void;
-  onMinRatingChange: (rating: number) => void;
   onReadFilterChange: (value: ReadFilter) => void;
   onReset: () => void;
 }
@@ -42,7 +39,7 @@ function chipClasses(active: boolean): string {
   ].join(' ');
 }
 
-const RATING_OPTIONS = [5, 4, 3, 2, 1];
+
 
 /**
  * Barra dei filtri: genere e autore a selezione singola, tag a selezione
@@ -57,12 +54,10 @@ export default function FilterBar({
   selectedGenre,
   selectedTags,
   selectedAuthorSlug,
-  minRating,
   readFilter,
   onGenreChange,
   onTagToggle,
   onAuthorChange,
-  onMinRatingChange,
   onReadFilterChange,
   onReset,
 }: FilterBarProps): ReactElement {
@@ -70,7 +65,6 @@ export default function FilterBar({
     selectedGenre !== null ||
     selectedTags.length > 0 ||
     selectedAuthorSlug !== null ||
-    minRating > 0 ||
     readFilter !== 'all';
 
   return (
@@ -128,44 +122,23 @@ export default function FilterBar({
         </div>
       </div>
 
-      {/* Righe classificazione e letto unite in colonne */}
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {/* Filtro per classificazione minima */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-            Classificazione
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => onMinRatingChange(0)} className={chipClasses(minRating === 0)} aria-pressed={minRating === 0}>
-              Tutte
-            </button>
-            {RATING_OPTIONS.map((value) => (
-              <button key={value} type="button" onClick={() => onMinRatingChange(value)} className={chipClasses(minRating === value)} aria-pressed={minRating === value}>
-                <i className="fa-solid fa-star text-[0.7rem]" aria-hidden="true" />
-                {value}+
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Filtro per stato "letto" */}
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-            Letto
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
-              Tutti
-            </button>
-            <button type="button" onClick={() => onReadFilterChange('read')} className={chipClasses(readFilter === 'read')} aria-pressed={readFilter === 'read'}>
-              <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
-              Letti
-            </button>
-            <button type="button" onClick={() => onReadFilterChange('unread')} className={chipClasses(readFilter === 'unread')} aria-pressed={readFilter === 'unread'}>
-              <i className="fa-solid fa-bookmark text-[0.7rem]" aria-hidden="true" />
-              Da leggere
-            </button>
-          </div>
+      {/* Filtro per stato "letto" */}
+      <div className="flex flex-col gap-2">
+        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
+          Letto
+        </span>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
+            Tutti
+          </button>
+          <button type="button" onClick={() => onReadFilterChange('read')} className={chipClasses(readFilter === 'read')} aria-pressed={readFilter === 'read'}>
+            <i className="fa-solid fa-check text-[0.7rem]" aria-hidden="true" />
+            Letti
+          </button>
+          <button type="button" onClick={() => onReadFilterChange('unread')} className={chipClasses(readFilter === 'unread')} aria-pressed={readFilter === 'unread'}>
+            <i className="fa-solid fa-bookmark text-[0.7rem]" aria-hidden="true" />
+            Da leggere
+          </button>
         </div>
       </div>
 

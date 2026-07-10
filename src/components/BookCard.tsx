@@ -1,9 +1,7 @@
 import type { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import type { Book } from '../types';
+import { type Book } from '../types';
 import Tag from './Tag';
-import StarRating from './StarRating';
-
 interface BookCardProps {
   book: Book;
   /** Nome dell'autore già risolto da chi usa questo componente (Home,
@@ -98,8 +96,7 @@ export default function BookCard({ book, authorName }: BookCardProps): ReactElem
             )}
           </div>
 
-          <div className="flex items-center justify-between border-t border-[#4A3526]/50 pt-3">
-            <StarRating rating={book.rating} />
+          <div className="flex items-center justify-end border-t border-[#4A3526]/50 pt-3">
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
               Apri la scheda
               <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
