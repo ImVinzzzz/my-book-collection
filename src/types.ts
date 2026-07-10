@@ -59,6 +59,8 @@ export interface Book {
   publisher?: string;
   /** Anno di pubblicazione (opzionale, stringa per ammettere "circa 1960" ecc.) */
   publicationYear?: string;
+  /** Codice ISBN del libro (opzionale) */
+  isbn?: string;
   /** Sinossi del libro */
   synopsis: string;
 
