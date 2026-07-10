@@ -21,24 +21,17 @@ export const authors: Author[] = [
     photoUrl: "/images/authors/lawrence-m-krauss.jpg",
   },
   {
-    id: 'elena-mariotti',
-    slug: 'elena-mariotti',
-    name: 'Elena Mariotti',
-    bio: "Scrittrice e giornalista, esordisce con romanzi d'inchiesta ambientati nella provincia italiana degli anni '70. Il suo stile asciutto e la cura per i dettagli storici l'hanno resa una delle voci più seguite del giallo sociale contemporaneo.",
-    photoUrl: '',
-  },
-  {
-    id: 'tobias-renn',
-    slug: 'tobias-renn',
-    name: 'Tobias Renn',
-    bio: "Autore di fantascienza di origine tedesca, naturalizzato italiano. Le sue opere esplorano i confini tra intelligenza artificiale ed etica, spesso ambientate in colonie spaziali ai margini del sistema solare.",
-    photoUrl: '',
-  },
-  {
     id: "j-k-rowling",
     slug: "j-k-rowling",
     name: "J.K. Rowling",
     bio: "J.K. Rowling is the author of the enduringly popular, era-defining Harry Potter book series, as well as several stand-alone novels for adults and children, and a bestselling crime fiction series written under the pen name Robert Galbraith.",
     photoUrl: "/images/authors/j-k-rowling.jpg",
   },
+  {
+  id: "dan-brown",
+  slug: "dan-brown",
+  name: "Dan Brown",
+  bio: "Dan Brown è un autore statunitense. Fin da piccolo ha ricevuto un'educazione cristiana e sia lui sia i suoi fratelli hanno frequentato la Phillips Exeter Academy. In generale è cresciuto in un clima familiare dove si cercava di conciliare scienza e fede, visto che il padre aveva una mentalità più aperta al mondo scientifico mentre la madre un'idea più religiosa. Scienza e fede saranno tra le tematiche centrali della sua produzione artistica.\nSi è laureato in seguito all’Amherst College e alla Phillips Exeter Academy, dove ha passato un periodo insegnando inglese prima di impegnarsi completamente alla scrittura. È scrittore di numerosi bestseller, tra cui quello che ha raggiunto i primi posti delle classifiche di tutto il mondo e l'ha reso celebre: 'Il codice da Vinci (The Da Vinci Code)', uno dei romanzi di maggiore successo di tutti i tempi. ",
+  photoUrl: "/images/authors/dan-brown.jpg",
+},
 ];
