@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BookDetail from './pages/BookDetail';
 import AuthorDetail from './pages/AuthorDetail';
+import BookGenerator from './pages/BookGenerator';
 import Footer from './components/Footer';
 
 /**
@@ -23,6 +24,7 @@ export default function App(): ReactElement {
         <Route path="/" element={<Home />} />
         <Route path="/libro/:slug" element={<BookDetail />} />
         <Route path="/autore/:slug" element={<AuthorDetail />} />
+        <Route path="/generatore" element={<BookGenerator />} />
         {/* Qualsiasi path non riconosciuto riporta in home */}
         <Route path="*" element={<Home />} />
       </Routes>
