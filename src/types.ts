@@ -61,8 +61,7 @@ export interface Book {
   publicationYear?: string;
   /** Sinossi del libro */
   synopsis: string;
-  /** Valutazione personale, da 0 a 5 stelle */
-  rating: number;
+
   /** Note libere mostrate in un box dedicato (opzionale) */
   notes?: string;
   /** Se true, mostra il cuoricino "Preferito" in home e nella scheda */
