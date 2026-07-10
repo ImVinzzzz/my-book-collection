@@ -12,6 +12,15 @@ export default function Footer(): ReactElement {
         Sito amatoriale senza fini di lucro. Non si intende infrangere alcun copyright.
         Tutti i libri, gli autori e i marchi citati appartengono ai relativi proprietari.
       </p>
+      <div className="mt-3">
+        <a
+          href="/tools/book-generator.html"
+          className="inline-flex items-center gap-1.5 font-semibold text-[#3FA796] hover:text-[#6FC9BB] transition-colors"
+        >
+          <i className="fa-solid fa-circle-plus" aria-hidden="true" />
+          Nuova Scheda Libro / Autore
+        </a>
+      </div>
     </footer>
   );
 }
