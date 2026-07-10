@@ -135,15 +135,7 @@
             </div>
           </div>
 
-          <div>
-            <label class="block text-sm font-semibold mb-1">Classificazione *</label>
-            <div class="flex items-center gap-3">
-              <div id="rating-stars" class="flex items-center gap-1"></div>
-              <span id="rating-value-label" class="text-sm text-[#B8A691]">0/5</span>
-              <button type="button" onclick="setRating(0)" class="text-xs text-[#8A7765] hover:text-[#3FA796]">Azzera</button>
-            </div>
-            <input type="hidden" id="rating" value="0" />
-          </div>
+
 
           <div>
             <label class="block text-sm font-semibold mb-1" for="synopsis">Sinossi *</label>
@@ -242,7 +234,6 @@
 
     <script>
       let activeTab = 'book';
-      let currentRating = 0;
       let slugTouched = false;
       let coverTouched = false;
 
@@ -293,28 +284,7 @@
         document.getElementById('output-section').classList.add('hidden');
       }
 
-      /* --- Classificazione (stelle) --- */
 
-      function renderRatingStars() {
-        const container = document.getElementById('rating-stars');
-        container.innerHTML = '';
-        for (let i = 1; i <= 5; i += 1) {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'text-xl px-0.5 focus:outline-none';
-          const filled = i <= currentRating;
-          button.innerHTML = `<i class="${filled ? 'fa-solid' : 'fa-regular'} fa-star ${filled ? 'text-[#FFD166]' : 'text-[#5C4A38]'}" aria-hidden="true"></i>`;
-          button.onclick = () => setRating(i);
-          container.appendChild(button);
-        }
-      }
-
-      function setRating(value) {
-        currentRating = value;
-        document.getElementById('rating').value = String(value);
-        document.getElementById('rating-value-label').textContent = `${value}/5`;
-        renderRatingStars();
-      }
 
       /* --- Campi automatici del libro --- */
 
@@ -424,7 +394,7 @@
           .filter(Boolean);
         const publisher = document.getElementById('publisher').value.trim();
         const publicationYear = document.getElementById('publicationYear').value.trim();
-        const rating = Number(document.getElementById('rating').value) || 0;
+
         const notes = document.getElementById('notes').value.trim();
         const favorite = document.getElementById('favorite').checked;
         const read = document.getElementById('read').checked;
@@ -464,7 +434,7 @@
         if (publisher) lines.push(`publisher: ${tsString(publisher)},`);
         if (publicationYear) lines.push(`publicationYear: ${tsString(publicationYear)},`);
         lines.push(`synopsis: ${tsString(synopsis)},`);
-        lines.push(`rating: ${rating},`);
+
         if (notes) lines.push(`notes: ${tsString(notes)},`);
         lines.push(`favorite: ${favorite},`);
         lines.push(`read: ${read},`);
@@ -536,13 +506,12 @@
         document.getElementById('authorId').dataset.touched = 'false';
         slugTouched = false;
         coverTouched = false;
-        setRating(0);
+
         document.getElementById('output-section').classList.add('hidden');
       }
 
       initBookAutoFields();
       initAuthorAutoFields();
-      renderRatingStars();
       switchTab('book');
     </script>
   </body>
