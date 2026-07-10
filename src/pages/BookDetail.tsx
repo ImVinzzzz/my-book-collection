@@ -47,6 +47,7 @@ export default function BookDetail(): ReactElement {
   const metaItems: MetaItem[] = [
     book.publisher && { icon: 'fa-solid fa-building-columns', label: book.publisher },
     book.publicationYear && { icon: 'fa-solid fa-calendar-days', label: book.publicationYear },
+    book.isbn && { icon: "fa-solid fa-barcode", label: book.isbn },
     {
       icon: book.read ? 'fa-solid fa-check-circle' : 'fa-solid fa-bookmark',
       label: book.read ? 'Già letto' : 'Da leggere',

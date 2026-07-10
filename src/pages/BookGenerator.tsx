@@ -42,6 +42,7 @@ export default function BookGenerator(): ReactElement {
   const [tags, setTags] = useState("");
   const [publisher, setPublisher] = useState("");
   const [publicationYear, setPublicationYear] = useState("");
+  const [isbn, setIsbn] = useState("");
   const [stanza, setStanza] = useState("");
   const [scaffale, setScaffale] = useState("");
   const [ripiano, setRipiano] = useState("");
@@ -109,6 +110,7 @@ export default function BookGenerator(): ReactElement {
     setTags("");
     setPublisher("");
     setPublicationYear("");
+    setIsbn("");
     setStanza("");
     setScaffale("");
     setRipiano("");
@@ -149,20 +151,7 @@ export default function BookGenerator(): ReactElement {
         .filter(Boolean);
 
       const hasPosizione = stanza.trim() || scaffale.trim() || ripiano.trim();
-      if (hasPosizione) {
-        if (stanza.trim() && !/^[A-Za-z]{3}$/.test(stanza.trim())) {
-          alert("La stanza deve essere composta esattamente da 3 lettere.");
-          return;
-        }
-        if (scaffale.trim() && !/^\d{2}$/.test(scaffale.trim())) {
-          alert("Lo scaffale deve essere composto da 2 cifre (es: 03).");
-          return;
-        }
-        if (ripiano.trim() && !/^[A-Za-z]$/.test(ripiano.trim())) {
-          alert("Il ripiano deve essere una singola lettera.");
-          return;
-        }
-      }
+
 
       const lines = [
         "id: " + tsString(finalId) + ",",
@@ -183,6 +172,9 @@ export default function BookGenerator(): ReactElement {
       }
       if (publicationYear) {
         lines.push("publicationYear: " + tsString(publicationYear) + ",");
+      }
+      if (isbn) {
+        lines.push("isbn: " + tsString(isbn) + ",");
       }
       lines.push("synopsis: " + tsString(synopsis) + ",");
       if (notes) {
@@ -416,44 +408,72 @@ export default function BookGenerator(): ReactElement {
                 </div>
               </div>
 
+              <div>
+                <label className="block text-sm font-semibold mb-1" htmlFor="isbn">ISBN</label>
+                <input
+                  id="isbn"
+                  type="text"
+                  value={isbn}
+                  onChange={(e) => setIsbn(e.target.value)}
+                  className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]"
+                  placeholder="978-88-04-XXXXX-X"
+                />
+              </div>
+
               <div className="border-t border-[#4A3526]/50 pt-4">
                 <h3 className="text-sm font-semibold text-[#3FA796] mb-3">Posizione in biblioteca</h3>
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold mb-1" htmlFor="stanza">Stanza (3 lett.)</label>
-                    <input
+                    <label className="block text-xs font-semibold mb-1" htmlFor="stanza">Stanza</label>
+                    <select
                       id="stanza"
-                      type="text"
-                      maxLength={3}
                       value={stanza}
                       onChange={(e) => setStanza(e.target.value)}
-                      className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796] uppercase"
-                      placeholder="es. SOG"
-                    />
+                      className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]"
+                    >
+                      <option value="">Seleziona...</option>
+                      <option value="CAM">CAM</option>
+                      <option value="CUC">CUC</option>
+                      <option value="SOG">SOG</option>
+                      <option value="ING">ING</option>
+                    </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold mb-1" htmlFor="scaffale">Scaffale (2 cifre)</label>
-                    <input
+                    <label className="block text-xs font-semibold mb-1" htmlFor="scaffale">Scaffale</label>
+                    <select
                       id="scaffale"
-                      type="text"
-                      maxLength={2}
                       value={scaffale}
                       onChange={(e) => setScaffale(e.target.value)}
                       className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]"
-                      placeholder="es. 03"
-                    />
+                    >
+                      <option value="">Seleziona...</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                    </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold mb-1" htmlFor="ripiano">Ripiano (1 lett.)</label>
-                    <input
+                    <label className="block text-xs font-semibold mb-1" htmlFor="ripiano">Ripiano</label>
+                    <select
                       id="ripiano"
-                      type="text"
-                      maxLength={1}
                       value={ripiano}
                       onChange={(e) => setRipiano(e.target.value)}
-                      className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796] uppercase"
-                      placeholder="es. A"
-                    />
+                      className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]"
+                    >
+                      <option value="">Seleziona...</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="E">E</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                      <option value="H">H</option>
+                    </select>
                   </div>
                 </div>
               </div>
