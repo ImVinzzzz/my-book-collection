@@ -18,7 +18,6 @@ export default function Home(): ReactElement {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
-  const [minRating, setMinRating] = useState(0);
   const [readFilter, setReadFilter] = useState<ReadFilter>('all');
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
@@ -56,14 +55,13 @@ export default function Home(): ReactElement {
       const matchesTags =
         selectedTags.length === 0 || selectedTags.some((tag) => book.tags.includes(tag));
       const matchesAuthor = selectedAuthorSlug === null || book.authorSlug === selectedAuthorSlug;
-      const matchesRating = minRating === 0 || book.rating >= minRating;
       const matchesRead =
         readFilter === 'all' ||
         (readFilter === 'read' && book.read) ||
         (readFilter === 'unread' && !book.read);
-      return matchesSearch && matchesGenre && matchesTags && matchesAuthor && matchesRating && matchesRead;
+      return matchesSearch && matchesGenre && matchesTags && matchesAuthor && matchesRead;
     });
-  }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, minRating, readFilter]);
+  }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, readFilter]);
 
   function toggleTag(tag: string): void {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((item) => item !== tag) : [...prev, tag]));
@@ -73,7 +71,6 @@ export default function Home(): ReactElement {
     setSelectedGenre(null);
     setSelectedTags([]);
     setSelectedAuthorSlug(null);
-    setMinRating(0);
     setReadFilter('all');
     setSearchQuery("");
   }
@@ -91,7 +88,7 @@ export default function Home(): ReactElement {
           </div>
           <h1 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">I Miei Libri</h1>
           <p className="max-w-2xl text-sm text-[#B8A691] sm:text-base">
-            Tutti i libri della mia collezione, con autori, valutazioni personali e a che punto
+            Tutti i libri della mia collezione, con autori e a che punto
             sono nel leggerli tutti.
           </p>
         </div>
@@ -133,12 +130,10 @@ export default function Home(): ReactElement {
               selectedGenre={selectedGenre}
               selectedTags={selectedTags}
               selectedAuthorSlug={selectedAuthorSlug}
-              minRating={minRating}
               readFilter={readFilter}
               onGenreChange={setSelectedGenre}
               onTagToggle={toggleTag}
               onAuthorChange={setSelectedAuthorSlug}
-              onMinRatingChange={setMinRating}
               onReadFilterChange={setReadFilter}
               onReset={resetFilters}
             />

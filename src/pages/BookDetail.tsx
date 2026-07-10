@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import { books } from '../data/books';
 import { authors } from '../data/authors';
 import Tag from '../components/Tag';
-import StarRating from '../components/StarRating';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 interface MetaItem {
@@ -119,8 +118,6 @@ export default function BookDetail(): ReactElement {
                   <Tag key={tag} label={tag} variant="tag" />
                 ))}
               </div>
-
-              <StarRating rating={book.rating} size="text-base" />
             </div>
           </div>
         </div>
@@ -141,6 +138,16 @@ export default function BookDetail(): ReactElement {
             {/* Scheda rapida */}
             <aside className="h-fit rounded-xl border border-[#4A3526] bg-[#241A12] p-5">
               <h2 className="font-display text-base font-bold text-[#F2E9DC]">Scheda rapida</h2>
+              
+              {book.posizione && (
+                <div className="mt-4 rounded-lg bg-[#1C1410] p-3 border border-[#3FA796]/30 text-center">
+                  <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Posizione</div>
+                  <div className="mt-1 font-mono text-base font-bold text-[#3FA796] tracking-wide">
+                    {book.posizione.stanza}-{book.posizione.scaffale}-{book.posizione.ripiano}
+                  </div>
+                </div>
+              )}
+
               <ul className="mt-4 flex flex-col gap-3">
                 {metaItems.map((item) => (
                   <li key={item.label} className="flex items-center gap-3 text-sm text-[#D9CBB8]">
@@ -150,27 +157,6 @@ export default function BookDetail(): ReactElement {
                 ))}
               </ul>
             </aside>
-
-            {/* Posizione */}
-            {book.posizione && (
-              <aside className="h-fit rounded-xl border border-[#4A3526] bg-[#241A12] p-5">
-                <h2 className="font-display text-base font-bold text-[#F2E9DC]">Posizione</h2>
-                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
-                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Stanza</div>
-                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.stanza}</div>
-                  </div>
-                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
-                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Scaffale</div>
-                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.scaffale}</div>
-                  </div>
-                  <div className="rounded-lg bg-[#1C1410] p-2 border border-[#4A3526]/50">
-                    <div className="text-[10px] uppercase tracking-wider text-[#B8A691]">Ripiano</div>
-                    <div className="mt-1 font-mono text-base font-bold text-[#3FA796]">{book.posizione.ripiano}</div>
-                  </div>
-                </div>
-              </aside>
-            )}
           </div>
         </div>
 
