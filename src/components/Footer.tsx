@@ -79,15 +79,26 @@ export default function Footer(): ReactElement {
           <h4 className="font-bold text-sm text-[#3FA796] uppercase tracking-wider mb-3">
             Area Gestione
           </h4>
-          <div>
-            <Link
-              to="/generatore"
-              className="inline-flex items-center gap-2 hover:text-[#3FA796] transition-colors"
-            >
-              <i className="fa-solid fa-square-plus text-center" aria-hidden="true" />
-              Nuova Scheda Libro / Autore
-            </Link>
-          </div>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                to="/generatore"
+                className="inline-flex items-center gap-2 hover:text-[#3FA796] transition-colors"
+              >
+                <i className="fa-solid fa-square-plus text-center" aria-hidden="true" />
+                Nuova Scheda Libro / Autore
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/generatore-generi"
+                className="inline-flex items-center gap-2 hover:text-[#3FA796] transition-colors"
+              >
+                <i className="fa-solid fa-tags text-center" aria-hidden="true" />
+                Nuovo Genere
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 
