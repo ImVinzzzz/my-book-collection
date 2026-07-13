@@ -82,7 +82,7 @@ export default function Footer(): ReactElement {
           <div>
             <Link
               to="/generatore"
-              className="inline-flex items-center gap-2 font-semibold text-[#3FA796] hover:text-[#6FC9BB] transition-colors"
+              className="inline-flex items-center gap-2 hover:text-[#3FA796] transition-colors"
             >
               <i className="fa-solid fa-square-plus text-center" aria-hidden="true" />
               Nuova Scheda Libro / Autore
