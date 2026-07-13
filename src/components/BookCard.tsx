@@ -73,38 +73,42 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
         </div>
       </div>
 
-      {/* Contenuto testuale a destra */}
-      <div className="flex flex-1 flex-col justify-between p-5 sm:p-6 gap-4">
+      {/* Contenuto testuale a destra (o sotto in grid) */}
+      <div className={"flex flex-1 flex-col justify-between " + (isGrid ? "p-3 gap-2" : "p-5 sm:p-6 gap-4")}>
         <div className="flex flex-col gap-2">
           <div>
-            <h3 className="font-display text-xl font-bold leading-snug text-[#F2E9DC] group-hover:text-white">
+            <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-sm line-clamp-2" : "text-xl")}>
               {book.title}
             </h3>
-            {book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
-            <p className="mt-1 text-xs text-[#8A7765]">di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
+            {!isGrid && book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
+            <p className={"mt-1 text-[#8A7765] " + (isGrid ? "text-[10px]" : "text-xs")}>di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
           </div>
 
-          <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
+          {!isGrid && (
+            <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
+          )}
         </div>
 
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <Tag label={book.genre} variant="genre" />
-            {visibleTags.map((tag) => (
-              <Tag key={tag} label={tag} variant="tag" />
-            ))}
-            {extraTagsCount > 0 && (
-              <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
-            )}
-          </div>
+        {!isGrid && (
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <Tag label={book.genre} variant="genre" />
+              {visibleTags.map((tag) => (
+                <Tag key={tag} label={tag} variant="tag" />
+              ))}
+              {extraTagsCount > 0 && (
+                <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
+              )}
+            </div>
 
-          <div className="flex items-center justify-end border-t border-[#4A3526]/50 pt-3">
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
-              Apri la scheda
-              <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
-            </span>
+            <div className="flex items-center justify-end border-t border-[#4A3526]/50 pt-3">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
+                Apri la scheda
+                <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Link>
   );
