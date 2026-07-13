@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import BookDetail from './pages/BookDetail';
 import AuthorDetail from './pages/AuthorDetail';
 import BookGenerator from './pages/BookGenerator';
+import GenreGenerator from './pages/GenreGenerator';
 import Footer from './components/Footer';
 
 /**
@@ -25,6 +26,7 @@ export default function App(): ReactElement {
         <Route path="/libro/:slug" element={<BookDetail />} />
         <Route path="/autore/:slug" element={<AuthorDetail />} />
         <Route path="/generatore" element={<BookGenerator />} />
+        <Route path="/generatore-generi" element={<GenreGenerator />} />
         {/* Qualsiasi path non riconosciuto riporta in home */}
         <Route path="*" element={<Home />} />
       </Routes>
