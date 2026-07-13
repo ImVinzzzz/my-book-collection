@@ -176,7 +176,7 @@ export default function Home(): ReactElement {
             </p>
           </div>
         ) : filteredBooks.length > 0 ? (
-          <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "flex flex-col gap-6"}>
+          <div className={viewMode === "grid" ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" : "flex flex-col gap-6"}>
             {filteredBooks.map((book) => (
               <BookCard
                 key={book.id}
