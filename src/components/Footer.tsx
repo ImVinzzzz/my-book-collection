@@ -68,7 +68,7 @@ export default function Footer(): ReactElement {
                 className="inline-flex items-center gap-2 hover:text-[#3FA796] transition-colors"
               >
                 <i className="fa-solid fa-gem text-center" aria-hidden="true" />
-                Guardiani di Etherea
+                I Guardiani di Etherea
               </a>
             </li>
           </ul>
