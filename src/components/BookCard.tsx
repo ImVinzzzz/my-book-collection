@@ -63,9 +63,8 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
         <div className="absolute inset-0 bg-gradient-to-t from-[#120D0A]/30 via-transparent to-transparent" />
 
         {book.favorite && (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-[#E84855]/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
-            <i className="fa-solid fa-heart text-[0.65rem]" aria-hidden="true" />
-            Preferito
+          <span className="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#E84855]/90 text-white shadow-md">
+            <i className="fa-solid fa-heart text-sm" aria-hidden="true" />
           </span>
         )}
 
@@ -79,16 +78,18 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
       <div className={"flex flex-1 flex-col justify-between " + (isGrid ? "p-3 gap-3" : "p-5 sm:p-6 gap-4")}>
         <div className="flex flex-col gap-2">
           <div>
-            <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-base line-clamp-2" : "text-xl")}>
+            <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-lg line-clamp-2" : "text-xl")}>
               {book.title}
             </h3>
             {!isGrid && book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
             <p className={"mt-1 text-[#8A7765] " + (isGrid ? "text-xs" : "text-xs")}>di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
           </div>
 
-          <p className={"text-[#D9CBB8] " + (isGrid ? "line-clamp-4 text-xs leading-normal" : "line-clamp-3 text-sm leading-relaxed")}>
-            {book.synopsis}
-          </p>
+          {!isGrid && (
+            <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">
+              {book.synopsis}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col gap-3">
