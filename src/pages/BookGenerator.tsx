@@ -1,5 +1,6 @@
 import { useState, useEffect, type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import { GENRE_SEAL_ICONS } from '../components/BookCard';
 
 /** Rimuove accenti/apostrofi e produce uno slug url-safe. */
 function slugify(value: string): string {
@@ -38,7 +39,8 @@ export default function BookGenerator(): ReactElement {
   const [slug, setSlug] = useState("");
   const [bookId, setBookId] = useState("");
   const [coverImageUrl, setCoverImageUrl] = useState("");
-  const [genre, setGenre] = useState("");
+  const [selectedGenreOption, setSelectedGenreOption] = useState("");
+  const [customGenre, setCustomGenre] = useState("");
   const [tags, setTags] = useState("");
   const [publisher, setPublisher] = useState("");
   const [publicationYear, setPublicationYear] = useState("");
@@ -106,7 +108,8 @@ export default function BookGenerator(): ReactElement {
     setSlug("");
     setBookId("");
     setCoverImageUrl("");
-    setGenre("");
+    setSelectedGenreOption("");
+    setCustomGenre("");
     setTags("");
     setPublisher("");
     setPublicationYear("");
@@ -165,7 +168,8 @@ export default function BookGenerator(): ReactElement {
       if (coverImageUrl) {
         lines.push("coverImageUrl: " + tsString(coverImageUrl) + ",");
       }
-      lines.push("genre: " + tsString(genre) + ",");
+      const finalGenre = selectedGenreOption === "altro" ? customGenre : selectedGenreOption;
+      lines.push("genre: " + tsString(finalGenre) + ",");
       lines.push("tags: [" + tagList.map(tsString).join(", ") + "],");
       if (publisher) {
         lines.push("publisher: " + tsString(publisher) + ",");
@@ -360,15 +364,28 @@ export default function BookGenerator(): ReactElement {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold mb-1" htmlFor="genre">Genere</label>
-                  <input
-                    id="genre"
-                    type="text"
-                    value={genre}
-                    onChange={(e) => setGenre(e.target.value)}
+                  <label className="block text-sm font-semibold mb-1" htmlFor="genreSelect">Genere</label>
+                  <select
+                    id="genreSelect"
+                    value={selectedGenreOption}
+                    onChange={(e) => setSelectedGenreOption(e.target.value)}
                     className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 focus:outline-none focus:border-[#3FA796]"
-                    placeholder="Giallo"
-                  />
+                  >
+                    <option value="">Seleziona genere...</option>
+                    {Object.keys(GENRE_SEAL_ICONS).map((g) => (
+                      <option key={g} value={g}>{g}</option>
+                    ))}
+                    <option value="altro">Altro...</option>
+                  </select>
+                  {selectedGenreOption === "altro" && (
+                    <input
+                      type="text"
+                      value={customGenre}
+                      onChange={(e) => setCustomGenre(e.target.value)}
+                      className="w-full rounded-lg bg-[#120D0A] border border-[#4A3526] px-3 py-2 mt-2 focus:outline-none focus:border-[#3FA796]"
+                      placeholder="Specifica genere..."
+                    />
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-semibold mb-1" htmlFor="tags">Tag</label>
