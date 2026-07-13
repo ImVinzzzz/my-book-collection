@@ -21,6 +21,7 @@ export default function Home(): ReactElement {
   const [readFilter, setReadFilter] = useState<ReadFilter>('all');
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+  const [viewMode, setViewMode] = useState<"row" | "grid">("row");
 
   // Mappa slug -> nome autore, per non dover cercare nell'array a ogni card.
   const authorNameBySlug = useMemo(() => {
@@ -108,10 +109,19 @@ export default function Home(): ReactElement {
             <div className="flex items-center gap-3">
               <button
                 type="button"
+                onClick={() => setViewMode(viewMode === "row" ? "grid" : "row")}
+                className="inline-flex items-center justify-center rounded-lg bg-[#241A12] px-3 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
+                title={viewMode === "row" ? "Visualizza come griglia" : "Visualizza come lista"}
+              >
+                <i className={"fa-solid " + (viewMode === "row" ? "fa-bars" : "fa-grip") + " text-[#3FA796]"} aria-hidden="true" />
+              </button>
+
+              <button
+                type="button"
                 onClick={() => setShowFilters(!showFilters)}
                 className="inline-flex items-center gap-2 rounded-lg bg-[#241A12] px-4 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
               >
-                <i className={`fa-solid ${showFilters ? 'fa-filter-circle-xmark' : 'fa-filter'} text-[#3FA796]`} aria-hidden="true" />
+                <i className={"fa-solid " + (showFilters ? "fa-filter-circle-xmark" : "fa-filter") + " text-[#3FA796]"} aria-hidden="true" />
                 {showFilters ? 'Nascondi filtri' : 'Mostra filtri'}
               </button>
 
@@ -153,7 +163,7 @@ export default function Home(): ReactElement {
           </div>
         )}
 
-        {/* Elenco libri a stack orizzontale */}
+        {/* Elenco libri a stack orizzontale o a griglia */}
         {books.length === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-xl border border-dashed border-[#4A3526] py-16 text-center text-[#8A7765]">
             <i className="fa-solid fa-box-archive text-3xl" aria-hidden="true" />
@@ -166,12 +176,13 @@ export default function Home(): ReactElement {
             </p>
           </div>
         ) : filteredBooks.length > 0 ? (
-          <div className="flex flex-col gap-6">
+          <div className={viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "flex flex-col gap-6"}>
             {filteredBooks.map((book) => (
               <BookCard
                 key={book.id}
                 book={book}
-                authorName={authorNameBySlug.get(book.authorSlug) ?? 'Autore sconosciuto'}
+                authorName={authorNameBySlug.get(book.authorSlug) ?? "Autore sconosciuto"}
+                viewMode={viewMode}
               />
             ))}
           </div>
