@@ -77,14 +77,14 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
       <div className={"flex flex-1 flex-col justify-between " + (isGrid ? "p-3 gap-3" : "p-5 sm:p-6 gap-4")}>
         <div className="flex flex-col gap-2">
           <div>
-            <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-sm line-clamp-2" : "text-xl")}>
+            <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-base line-clamp-2" : "text-xl")}>
               {book.title}
             </h3>
             {!isGrid && book.subtitle && <p className="mt-1 text-sm italic text-[#B8A691]">{book.subtitle}</p>}
-            <p className={"mt-1 text-[#8A7765] " + (isGrid ? "text-[10px]" : "text-xs")}>di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
+            <p className={"mt-1 text-[#8A7765] " + (isGrid ? "text-xs" : "text-xs")}>di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
           </div>
 
-          <p className={"text-[#D9CBB8] " + (isGrid ? "line-clamp-4 text-[11px] leading-normal" : "line-clamp-3 text-sm leading-relaxed")}>
+          <p className={"text-[#D9CBB8] " + (isGrid ? "line-clamp-4 text-xs leading-normal" : "line-clamp-3 text-sm leading-relaxed")}>
             {book.synopsis}
           </p>
         </div>
