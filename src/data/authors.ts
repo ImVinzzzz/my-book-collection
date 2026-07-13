@@ -24,7 +24,7 @@ export const authors: Author[] = [
     id: "j-k-rowling",
     slug: "j-k-rowling",
     name: "J.K. Rowling",
-    bio: "J.K. Rowling is the author of the enduringly popular, era-defining Harry Potter book series, as well as several stand-alone novels for adults and children, and a bestselling crime fiction series written under the pen name Robert Galbraith.",
+    bio: "J.K. Rowling è autrice della popolarissima serie di libri Harry Potter, oltre a diversi romanzi autonomi per adulti e bambini, e di una serie di crime novel scritta con lo pseudonimo Robert Galbraith.",
     photoUrl: "/images/authors/j-k-rowling.jpg",
   },
   {
