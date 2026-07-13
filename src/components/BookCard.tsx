@@ -74,7 +74,7 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
       </div>
 
       {/* Contenuto testuale a destra (o sotto in grid) */}
-      <div className={"flex flex-1 flex-col justify-between " + (isGrid ? "p-3 gap-2" : "p-5 sm:p-6 gap-4")}>
+      <div className={"flex flex-1 flex-col justify-between " + (isGrid ? "p-3 gap-3" : "p-5 sm:p-6 gap-4")}>
         <div className="flex flex-col gap-2">
           <div>
             <h3 className={"font-display font-bold leading-snug text-[#F2E9DC] group-hover:text-white " + (isGrid ? "text-sm line-clamp-2" : "text-xl")}>
@@ -84,31 +84,29 @@ export default function BookCard({ book, authorName, viewMode = "row" }: BookCar
             <p className={"mt-1 text-[#8A7765] " + (isGrid ? "text-[10px]" : "text-xs")}>di <span className="font-semibold text-[#3FA796]">{authorName}</span></p>
           </div>
 
-          {!isGrid && (
-            <p className="line-clamp-3 text-sm leading-relaxed text-[#D9CBB8]">{book.synopsis}</p>
-          )}
+          <p className={"text-[#D9CBB8] " + (isGrid ? "line-clamp-4 text-[11px] leading-normal" : "line-clamp-3 text-sm leading-relaxed")}>
+            {book.synopsis}
+          </p>
         </div>
 
-        {!isGrid && (
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <Tag label={book.genre} variant="genre" />
-              {visibleTags.map((tag) => (
-                <Tag key={tag} label={tag} variant="tag" />
-              ))}
-              {extraTagsCount > 0 && (
-                <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
-              )}
-            </div>
-
-            <div className="flex items-center justify-end border-t border-[#4A3526]/50 pt-3">
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5">
-                Apri la scheda
-                <i className="fa-solid fa-arrow-right text-xs" aria-hidden="true" />
-              </span>
-            </div>
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <Tag label={book.genre} variant="genre" />
+            {!isGrid && visibleTags.map((tag) => (
+              <Tag key={tag} label={tag} variant="tag" />
+            ))}
+            {!isGrid && extraTagsCount > 0 && (
+              <span className="text-xs font-medium text-[#8A7765]">+{extraTagsCount}</span>
+            )}
           </div>
-        )}
+
+          <div className="flex items-center justify-end border-t border-[#4A3526]/50 pt-3">
+            <span className={"inline-flex items-center gap-1.5 font-semibold text-[#3FA796] transition-transform group-hover:translate-x-0.5 " + (isGrid ? "text-[11px]" : "text-sm")}>
+              Apri la scheda
+              <i className={"fa-solid fa-arrow-right " + (isGrid ? "text-[9px]" : "text-xs")} aria-hidden="true" />
+            </span>
+          </div>
+        </div>
       </div>
     </Link>
   );
