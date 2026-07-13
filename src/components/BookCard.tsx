@@ -8,6 +8,7 @@ interface BookCardProps {
    *  AuthorDetail...), così BookCard resta presentazionale e non deve
    *  importare data/authors.ts per fare la ricerca da solo. */
   authorName: string;
+  viewMode?: "row" | "grid";
 }
 
 /** Icona del "sigillo" mostrato sopra la copertina, in base al genere. */
@@ -33,21 +34,22 @@ function getSealIcon(genre: string): string {
  * un <Link> annidato dentro la card, che è già un <Link>, non sarebbe
  * HTML valido. Il link cliccabile all'autore vive in BookDetail.
  */
-export default function BookCard({ book, authorName }: BookCardProps): ReactElement {
+export default function BookCard({ book, authorName, viewMode = "row" }: BookCardProps): ReactElement {
   const visibleTags = book.tags.slice(0, 3);
   const extraTagsCount = book.tags.length - visibleTags.length;
+  const isGrid = viewMode === "grid";
 
   return (
     <Link
-      to={`/libro/${book.slug}`}
-      className="group relative flex flex-col sm:flex-row overflow-hidden rounded-2xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"
+      to={"/libro/" + book.slug}
+      className={"group relative flex flex-col " + (isGrid ? "" : "sm:flex-row ") + "overflow-hidden rounded-2xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"}
     >
-      {/* Copertina a sinistra (su schermi sm in poi) */}
-      <div className="relative aspect-[2/3] w-full sm:w-48 flex-shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r border-[#4A3526]">
+      {/* Copertina a sinistra (su schermi sm in poi nella visualizzazione a righe) */}
+      <div className={"relative aspect-[2/3] w-full " + (isGrid ? "" : "sm:w-48 ") + "flex-shrink-0 overflow-hidden border-b " + (isGrid ? "" : "sm:border-b-0 sm:border-r ") + "border-[#4A3526]"}>
         {book.coverImageUrl ? (
           <img
             src={book.coverImageUrl}
-            alt={`Copertina di ${book.title}`}
+            alt={"Copertina di " + book.title}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
@@ -67,7 +69,7 @@ export default function BookCard({ book, authorName }: BookCardProps): ReactElem
 
         {/* Sigillo con l'icona del genere */}
         <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#120D0A]/80 text-[#6FC9BB] shadow-md ring-2 ring-[#3FA796]/70 backdrop-blur-sm">
-          <i className={`${getSealIcon(book.genre)} text-sm`} aria-hidden="true" />
+          <i className={getSealIcon(book.genre) + " text-sm"} aria-hidden="true" />
         </div>
       </div>
 
