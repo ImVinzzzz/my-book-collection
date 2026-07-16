@@ -164,7 +164,7 @@ export const books: Book[] = [
     slug: "la-fisica-di-star-trek",
     title: "La fisica di Star Trek",
     subtitle: "La fantascienza di oggi è spesso la scienza di domani.",
-    authorSlug: "lawrence-m-krauss",
+    authorSlug: "lawrence-maxwell-krauss",
     coverImageUrl: "/images/books/la-fisica-di-star-trek.jpg",
     genre: "Saggio",
     tags: ["fisica", "scienza", "star trek", "saggio"],
