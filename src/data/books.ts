@@ -14,7 +14,7 @@ export const books: Book[] = [
   {
     id: "poirot-tutti-i-racconti",
     slug: "poirot-tutti-i-racconti",
-    title: "Poirot. Tutti i racconti",
+    title: "Poirot - Tutti i racconti",
     authorSlug: "agatha-christie",
     coverImageUrl: "/images/books/poirot-tutti-i-racconti.jpg",
     genre: "Giallo",
@@ -120,7 +120,7 @@ export const books: Book[] = [
   {
     id: "miss-marple-i-delitti-deliziosi",
     slug: "miss-marple-i-delitti-deliziosi",
-    title: "Miss Marple. I delitti deliziosi",
+    title: "Miss Marple - I delitti deliziosi",
     authorSlug: "agatha-christie",
     coverImageUrl: "/images/books/miss-marple-i-delitti-deliziosi.jpg",
     genre: "Giallo",
