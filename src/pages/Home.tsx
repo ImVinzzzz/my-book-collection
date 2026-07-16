@@ -113,7 +113,7 @@ export default function Home(): ReactElement {
                 className="inline-flex items-center justify-center rounded-lg bg-[#241A12] px-3 py-2 text-sm font-semibold text-[#D9CBB8] border border-[#4A3526] hover:text-[#F2E9DC] hover:border-[#3FA796] transition"
                 title={viewMode === "row" ? "Visualizza come griglia" : "Visualizza come lista"}
               >
-                <i className={"fa-solid " + (viewMode === "row" ? "fa-bars" : "fa-grip") + " text-[#3FA796]"} aria-hidden="true" />
+                <i className={"fa-solid " + (viewMode === "row" ? "fa-grip" : "fa-bars") + " text-[#3FA796]"} aria-hidden="true" />
               </button>
 
               <button
@@ -176,7 +176,7 @@ export default function Home(): ReactElement {
             </p>
           </div>
         ) : filteredBooks.length > 0 ? (
-          <div className={viewMode === "grid" ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" : "flex flex-col gap-6"}>
+          <div className={viewMode === "grid" ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" : "flex flex-col gap-6"}>
             {filteredBooks.map((book) => (
               <BookCard
                 key={book.id}
