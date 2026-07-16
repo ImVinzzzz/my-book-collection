@@ -125,6 +125,7 @@ export default function FilterBar({
       {/* Filtro per stato "letto" */}
       <div className="flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
+          <i className="fa-brands fa-redhat text-[0.7rem]" aria-hidden="true" />
           Status
         </span>
         <div className="flex flex-wrap gap-2">
