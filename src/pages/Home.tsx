@@ -20,6 +20,7 @@ export default function Home(): ReactElement {
   const [selectedAuthorSlug, setSelectedAuthorSlug] = useState<string | null>(null);
   const [readFilter, setReadFilter] = useState<ReadFilter>('all');
   const [searchQuery, setSearchQuery] = useState("");
+  const [authorSearchQuery, setAuthorSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<"row" | "grid">("row");
 
@@ -50,6 +51,9 @@ export default function Home(): ReactElement {
       const matchesSearch =
         searchQuery.trim() === "" ||
         book.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesAuthorSearch =
+        authorSearchQuery.trim() === "" ||
+        (authorNameBySlug.get(book.authorSlug) ?? "").toLowerCase().includes(authorSearchQuery.toLowerCase());
       const matchesGenre = selectedGenre === null || book.genre === selectedGenre;
       // I tag selezionati sono in OR tra loro: basta che il libro abbia
       // almeno uno dei tag spuntati per comparire nei risultati.
@@ -60,16 +64,17 @@ export default function Home(): ReactElement {
         readFilter === 'all' ||
         (readFilter === 'read' && book.read) ||
         (readFilter === 'unread' && !book.read);
-      return matchesSearch && matchesGenre && matchesTags && matchesAuthor && matchesRead;
+      return matchesSearch && matchesAuthorSearch && matchesGenre && matchesTags && matchesAuthor && matchesRead;
     }).sort((a, b) => a.title.localeCompare(b.title));
-  }, [searchQuery, selectedGenre, selectedTags, selectedAuthorSlug, readFilter]);
+  }, [searchQuery, authorSearchQuery, selectedGenre, selectedTags, selectedAuthorSlug, readFilter, authorNameBySlug]);
 
   const isAnyFilterActive =
     selectedGenre !== null ||
     selectedTags.length > 0 ||
     selectedAuthorSlug !== null ||
     readFilter !== "all" ||
-    searchQuery.trim() !== "";
+    searchQuery.trim() !== "" ||
+    authorSearchQuery.trim() !== "";
 
   function toggleTag(tag: string): void {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((item) => item !== tag) : [...prev, tag]));
@@ -81,6 +86,7 @@ export default function Home(): ReactElement {
     setSelectedAuthorSlug(null);
     setReadFilter('all');
     setSearchQuery("");
+    setAuthorSearchQuery("");
   }
 
   return (
@@ -130,15 +136,28 @@ export default function Home(): ReactElement {
               </span>
             </div>
 
-            <div className="relative w-full sm:max-w-xs">
-              <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#8A7765]" aria-hidden="true" />
-              <input
-                type="text"
-                placeholder="Cerca per titolo..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-[#4A3526] bg-[#241A12] py-2 pl-9 pr-4 text-sm text-[#F2E9DC] placeholder-[#8A7765] focus:border-[#3FA796] focus:outline-none transition"
-              />
+            <div className="flex flex-col gap-3 sm:flex-row w-full sm:w-auto">
+              <div className="relative w-full sm:max-w-xs">
+                <i className="fa-solid fa-feather-pointed absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#8A7765]" aria-hidden="true" />
+                <input
+                  type="text"
+                  placeholder="Cerca per autore..."
+                  value={authorSearchQuery}
+                  onChange={(e) => setAuthorSearchQuery(e.target.value)}
+                  className="w-full rounded-lg border border-[#4A3526] bg-[#241A12] py-2 pl-9 pr-4 text-sm text-[#F2E9DC] placeholder-[#8A7765] focus:border-[#3FA796] focus:outline-none transition"
+                />
+              </div>
+
+              <div className="relative w-full sm:max-w-xs">
+                <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[#8A7765]" aria-hidden="true" />
+                <input
+                  type="text"
+                  placeholder="Cerca per titolo..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full rounded-lg border border-[#4A3526] bg-[#241A12] py-2 pl-9 pr-4 text-sm text-[#F2E9DC] placeholder-[#8A7765] focus:border-[#3FA796] focus:outline-none transition"
+                />
+              </div>
             </div>
           </div>
         )}
