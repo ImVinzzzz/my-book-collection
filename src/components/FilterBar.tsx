@@ -110,7 +110,7 @@ export default function FilterBar({
         </span>
         <div className="flex flex-wrap gap-2">
           <button type="button" onClick={() => onAuthorChange(null)} className={chipClasses(selectedAuthorSlug === null)} aria-pressed={selectedAuthorSlug === null}>
-            <i className="fa-solid fa-user text-[0.7rem]" aria-hidden="true" />
+            <i className="fa-solid fa-people-group text-[0.7rem]" aria-hidden="true" />
             Tutti
           </button>
           {authors.map((author) => (
@@ -125,11 +125,11 @@ export default function FilterBar({
       {/* Filtro per stato "letto" */}
       <div className="flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-          <i className="fa-brands fa-redhat text-[0.7rem]" aria-hidden="true" />
           Status
         </span>
         <div className="flex flex-wrap gap-2">
           <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
+            <i className="fa-brands fa-redhat text-[0.7rem]" aria-hidden="true" />
             Tutti
           </button>
           <button type="button" onClick={() => onReadFilterChange('read')} className={chipClasses(readFilter === 'read')} aria-pressed={readFilter === 'read'}>
