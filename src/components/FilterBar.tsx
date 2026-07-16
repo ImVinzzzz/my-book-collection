@@ -125,7 +125,7 @@ export default function FilterBar({
       {/* Filtro per stato "letto" */}
       <div className="flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A7765]">
-          Letto
+          Status
         </span>
         <div className="flex flex-wrap gap-2">
           <button type="button" onClick={() => onReadFilterChange('all')} className={chipClasses(readFilter === 'all')} aria-pressed={readFilter === 'all'}>
