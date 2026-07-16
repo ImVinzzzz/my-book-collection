@@ -14,9 +14,9 @@ export const authors: Author[] = [
     photoUrl: "/images/authors/agatha-christie.jpg",
   },
   {
-    id: "lawrence-m-krauss",
-    slug: "lawrence-m-krauss",
-    name: "Lawrence M. Krauss",
+    id: "lawrence-maxwell-krauss",
+    slug: "lawrence-maxwell-krauss",
+    name: "Lawrence Maxwell Krauss",
     bio: "Lawrence Maxwell Krauss, conosciuto anche come Lawrence M. Krauss (New York, 27 maggio 1954), è un fisico, astronomo e saggista statunitense. È professore in pensione (dal 2019) di fisica, di astronomia ed ex direttore del dipartimento di fisica alla Case Western Reserve University. Ha insegnato fino al 2018 alla Arizona State University.",
     photoUrl: "/images/authors/lawrence-m-krauss.jpg",
   },
