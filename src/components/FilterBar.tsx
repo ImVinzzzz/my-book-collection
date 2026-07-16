@@ -110,7 +110,7 @@ export default function FilterBar({
         </span>
         <div className="flex flex-wrap gap-2">
           <button type="button" onClick={() => onAuthorChange(null)} className={chipClasses(selectedAuthorSlug === null)} aria-pressed={selectedAuthorSlug === null}>
-            <i className="fa-solid fa-people-group text-[0.7rem]" aria-hidden="true" />
+            <i className="fa-solid fa-users text-[0.7rem]" aria-hidden="true" />
             Tutti
           </button>
           {authors.map((author) => (
