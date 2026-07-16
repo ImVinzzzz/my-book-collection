@@ -81,7 +81,7 @@ export default function AuthorDetail(): ReactElement {
         </h2>
 
         {authorBooks.length > 0 ? (
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {authorBooks.map((book) => (
               <Link
                 key={book.id}
@@ -89,8 +89,8 @@ export default function AuthorDetail(): ReactElement {
                 className="group relative flex flex-col overflow-hidden rounded-xl bg-[#241A12] ring-1 ring-[#4A3526] transition-all duration-200 hover:-translate-y-1 hover:ring-[#3FA796]/50 hover:shadow-xl hover:shadow-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3FA796]"
               >
                 {/* Titolo sopra */}
-                <div className="p-3 text-center border-b border-[#4A3526]/50 min-h-[56px] flex items-center justify-center bg-[#1C1410]/50">
-                  <h3 className="font-display text-xs font-bold leading-snug text-[#F2E9DC] group-hover:text-[#3FA796] transition-colors line-clamp-2">
+                <div className="p-3 text-center border-b border-[#4A3526]/50 min-h-[52px] flex items-center justify-center bg-[#1C1410]/50 w-full overflow-hidden">
+                  <h3 className="font-display text-sm font-bold leading-snug text-[#F2E9DC] group-hover:text-[#3FA796] transition-colors truncate w-full">
                     {book.title}
                   </h3>
                 </div>
