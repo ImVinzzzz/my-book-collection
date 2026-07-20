@@ -153,7 +153,7 @@ export const books: Book[] = [
     synopsis: "Se vi siete mai domandati l'origine del Boccino d'Oro, da dove siano spuntati i Bolidi e perché i Wigtown Wanderers abbiano l'immagine di una mannaia d'argento sulla divisa, allora Il Quidditch attraverso i secoli è il libro che fa per voi. I proventi della vendita di questo libro andranno a Comic Relief e all'associazione benefica fondata da J.K. Rowling Lumos, che useranno il vostro denaro per salvare vite e migliorarne il tenore, impresa persino più importante e straordinaria della cattura del Boccino d'Oro in tre secondi e mezzo per mano di Roderick Plumpton nel 1921.",
     notes: "Hogwarts Library",
     favorite: false,
-    read: false,
+    read: true,
     posizione: {
       stanza: "CAM",
       scaffale: "01",
