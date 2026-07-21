@@ -21,6 +21,13 @@ export const authors: Author[] = [
     photoUrl: "/images/authors/lawrence-m-krauss.jpg",
   },
   {
+  id: "jules-verne",
+  slug: "jules-verne",
+  name: "Jules Verne",
+  bio: "Jules Verne è stato uno scrittore francese. Figlio primogenito di un avvocato, a lui spettava di proseguire la professione del padre. Ma fin da ragazzo rifiutava gli studi e si aggirava per la città e le banchine del porto, avido di racconti marinari e avventurosi. Il fratello Paul, più fortunato, poté seguire la sua vocazione e arruolarsi in marina per poi viaggiare, come aveva sempre sognato insieme a Jules. Questi invece, dopo una breve avventura - quando dodicenne riuscì a imbarcarsi su un mercantile diretto in America, venendo subito scovato, redarguito e rispedito a casa – venne mandato a Parigi per seguire gli studi di giurisprudenza. Ma il ragazzo non si applicava e questa negligenza incrinò presto i rapporti con il padre, che gli tolse la rendita mensile che gli serviva a sopravvivere: egli prese a trascorrere le sue giornate in biblioteca, per riscaldarsi e per poter leggere romanzi d'avventura e di viaggi. Aveva infatti promesso, dopo quella bravata sul mercantile, che non avrebbe più viaggiato, se non con l'immaginazione. Fu durante una di quelle lunghe giornate che, per puro caso, si imbatté in A. Dumas. L'aneddoto racconta che il giovane cadde addosso allo scrittore scivolando come un monello dalla ringhiera di una scala. Dumas lo prese in simpatia e lo introdusse nell'ambiente letterario. ",
+  photoUrl: "/images/authors/jules-verne.jpg",
+  },
+  {
     id: "j-k-rowling",
     slug: "j-k-rowling",
     name: "J.K. Rowling",
