@@ -38,7 +38,7 @@ export default function ScrollToTopButton(): ReactElement | null {
       className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-[#3FA796] text-[#120D0A] shadow-lg shadow-black/40 transition hover:bg-[#6FC9BB] hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#3FA796] focus:ring-offset-2 focus:ring-offset-[#1C1410]"
       aria-label="Torna in cima"
     >
-      <i className="fa-solid fa-angle-up fa-bounce text-lg font-bold" aria-hidden="true" />
+      <i className="fa-solid fa-angle-up fa-float text-lg font-bold" aria-hidden="true" />
     </button>
   );
 }
