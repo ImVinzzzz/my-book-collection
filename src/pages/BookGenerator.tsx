@@ -251,7 +251,7 @@ export default function BookGenerator(): ReactElement {
             <i className="fa-solid fa-circle-plus text-2xl" aria-hidden="true" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em]">Archiviazione</span>
           </div>
-          <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">Generatore di Schede</h1>
+          <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">Editor di Schede</h1>
           <p className="mt-2 text-sm text-[#B8A691] max-w-2xl">
             Compila il form, genera il codice e incollalo manualmente nel relativo file di dati.
           </p>
