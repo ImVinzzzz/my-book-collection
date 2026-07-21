@@ -11,17 +11,17 @@ interface TagProps {
 /** Icone di default per i generi suggeriti. 
  *  Per quelli non in lista viene usata un'icona generica (fa-book). */
 const GENRE_ICONS: Record<string, string> = {
-  Avventura: 'fa-solid fa-compass fa-shake',
+  Avventura: 'fa-solid fa-compass',
   Epica: 'fa-solid fa-shield-halved',
   Fantascienza: 'fa-solid fa-rocket',
-  Giallo: 'fa-solid fa-magnifying-glass fa-wag',
-  Fantasy: 'fa-solid fa-wand-sparkle fa-fade',
+  Giallo: 'fa-solid fa-magnifying-glass',
+  Fantasy: 'fa-solid fa-wand-sparkle',
   Horror: "fa solid fa-skull",
   Narrativa: 'fa-solid fa-feather',
   Romanzo: 'fa-solid fa-book-open',
   Saggio: 'fa-solid fa-graduation-cap',
   Storico: "fa solid fa-landmark",
-  Thriller: 'fa-solid fa-heart-pulse fa-beat',
+  Thriller: 'fa-solid fa-heart-pulse',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-book';
