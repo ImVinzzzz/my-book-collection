@@ -8,18 +8,18 @@ interface TagProps {
   icon?: string;
 }
 
-/** Icone di default per i generi suggeriti. Per generi non in lista
- *  viene usata un'icona generica (fa-book). */
+/** Icone di default per i generi suggeriti. 
+ *  Per quelli non in lista viene usata un'icona generica (fa-book). */
 const GENRE_ICONS: Record<string, string> = {
-  Romanzo: 'fa-solid fa-book-open',
   Avventura: 'fa-solid fa-compass',
-  Giallo: 'fa-solid fa-magnifying-glass',
-  Thriller: 'fa-solid fa-bolt',
-  Saggio: 'fa-solid fa-graduation-cap',
-  Narrativa: 'fa-solid fa-feather',
   Epica: 'fa-solid fa-shield-halved',
-  Fantasy: 'fa-solid fa-hat-wizard',
   Fantascienza: 'fa-solid fa-rocket',
+  Giallo: 'fa-solid fa-magnifying-glass',
+  Fantasy: 'fa-solid fa-wand-sparkle fa-fade',  
+  Narrativa: 'fa-solid fa-feather',
+  Romanzo: 'fa-solid fa-book-open',
+  Saggio: 'fa-solid fa-graduation-cap',
+  Thriller: 'fa-solid fa-heart-pulse fa-beat',
 };
 
 const DEFAULT_GENRE_ICON = 'fa-solid fa-book';
