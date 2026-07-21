@@ -207,7 +207,7 @@ export const books: Book[] = [
   authorSlug: "agatha-christie",
   coverImageUrl: "/images/books/trappola-per-topi.jpg",
   genre: "Giallo",
-  tags: ["Hercule Poirot", "romanzo", "giallo"],
+  tags: ["romanzo", "giallo"],
   publisher: "Mondadori",
   publicationYear: "2025",
   isbn: "978-88-04-80810-7",
