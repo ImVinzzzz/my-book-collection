@@ -15,10 +15,12 @@ const GENRE_ICONS: Record<string, string> = {
   Epica: 'fa-solid fa-shield-halved',
   Fantascienza: 'fa-solid fa-rocket',
   Giallo: 'fa-solid fa-magnifying-glass fa-wag',
-  Fantasy: 'fa-solid fa-wand-sparkle fa-fade',  
+  Fantasy: 'fa-solid fa-wand-sparkle fa-fade',
+  Horror: "fa solid fa-skull",
   Narrativa: 'fa-solid fa-feather',
   Romanzo: 'fa-solid fa-book-open',
   Saggio: 'fa-solid fa-graduation-cap',
+  Storico: "fa solid fa-landmark",
   Thriller: 'fa-solid fa-heart-pulse fa-beat',
 };
 
