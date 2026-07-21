@@ -163,7 +163,7 @@ export const books: Book[] = [
     slug: "fermate-il-boia",
     title: "Fermate il boia",
     authorSlug: "agatha-christie",
-    coverImageUrl: "/images/books/fermate-il-boia.webp",
+    coverImageUrl: "/images/books/fermate-il-boia.jpg",
     genre: "Giallo",
     tags: ["Hercule Poirot", "romanzo", "giallo"],
     publisher: "RCS Quotidiani",
