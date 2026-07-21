@@ -13,17 +13,17 @@ interface BookCardProps {
 
 /** Icona del "sigillo" mostrato sopra la copertina, in base al genere. */
 export const GENRE_SEAL_ICONS: Record<string, string> = {
-  Avventura: 'fa-solid fa-compass',
+  Avventura: 'fa-solid fa-compass fa-shake',
   Epica: 'fa-solid fa-shield-halved',
   Fantascienza: 'fa-solid fa-rocket',
-  Fantasy: 'fa-solid fa-hat-wizard',
-  Giallo: 'fa-solid fa-magnifying-glass',
+  Giallo: 'fa-solid fa-magnifying-glass fa-wag',
+  Fantasy: 'fa-solid fa-wand-sparkle fa-fade',
   Horror: "fa solid fa-skull",
   Narrativa: 'fa-solid fa-feather',
   Romanzo: 'fa-solid fa-book-open',
   Saggio: 'fa-solid fa-graduation-cap',
   Storico: "fa solid fa-landmark",
-  Thriller: 'fa-solid fa-heart-pulse',  
+  Thriller: 'fa-solid fa-heart-pulse fa-beat',  
 };
 
 function getSealIcon(genre: string): string {
