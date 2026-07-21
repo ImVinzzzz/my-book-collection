@@ -39,11 +39,11 @@ export const books: Book[] = [
   authorSlug: "jules-verne",
   coverImageUrl: "/images/books/ventimila-leghe-sotto-i-mari.webp",
   genre: "Avventura",
-  tags: ["romanzo", "ragazzi", "classici", "avventura"],
+  tags: ["romanzo", "ragazzi", "classici", "capitano Nemo", "Nautilus", "avventura"],
   publisher: "Feltrinelli",
   publicationYear: "2022",
   isbn: "978-88-07-90290-1",
-  synopsis: "Scritto nel 1870, il romanzo di Jules Verne, tra i più celebri dello scrittore francese, è stato ripreso nel corso del Novecento da innumerevoli adattamenti televisivi e cinematografici. Pensato come il primo volume di una trilogia, fin da subito il romanzo accese l’immaginazione dei contemporanei, per la straordinaria visione di un sottomarino in grado di esplorare il fondo dei mari. Una nave, difatti, l’Abraham Lincoln, viene incaricata di catturare un misterioso mostro marino. Nell’equipaggio spiccano il naturalista, professore Aronnax, il servo Conseil e il fiocinatore Ned Land. Travolti da un’ondata, i tre vengono raccolti proprio dal “mostro marino”, il Nautilus, guidato dal misterioso capitano Nemo, un uomo che rifugge il consesso civile, si schiera talvolta a sostegno degli oppressi e peraltro si sente un perseguitato. Insieme al capitano Nemo, avranno modo di percorrere in lungo e in largo gli oceani, alla riscoperta delle rovine dell’Atlantide perduta e lottando contro piovre gigantesche, fino al sorprendente finale.",
+  synopsis: "Scritto nel 1870, è il romanzo di Jules Verne, tra i più celebri dello scrittore. Pensato come il primo volume di una trilogia, fin da subito il romanzo accese l’immaginazione dei contemporanei, per la straordinaria visione di un sottomarino in grado di esplorare il fondo dei mari. Una nave, difatti, l’Abraham Lincoln, viene incaricata di catturare un misterioso mostro marino. Nell’equipaggio spiccano il naturalista, professore Aronnax, il servo Conseil e il fiocinatore Ned Land. Travolti da un’ondata, i tre vengono raccolti proprio dal “mostro marino”, il Nautilus, guidato dal misterioso capitano Nemo, un uomo che rifugge il consesso civile, si schiera talvolta a sostegno degli oppressi e peraltro si sente un perseguitato. Insieme al capitano Nemo, avranno modo di percorrere in lungo e in largo gli oceani, alla riscoperta delle rovine dell’Atlantide perduta e lottando contro piovre gigantesche, fino al sorprendente finale.",
   favorite: false,
   read: true,
   posizione: {
