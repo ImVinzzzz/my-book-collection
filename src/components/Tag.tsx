@@ -14,7 +14,7 @@ const GENRE_ICONS: Record<string, string> = {
   Avventura: 'fa-solid fa-compass',
   Epica: 'fa-solid fa-shield-halved',
   Fantascienza: 'fa-solid fa-rocket',
-  Giallo: 'fa-solid fa-magnifying-glass',
+  Giallo: 'fa-solid fa-magnifying-glass fa-wag',
   Fantasy: 'fa-solid fa-wand-sparkle fa-fade',  
   Narrativa: 'fa-solid fa-feather',
   Romanzo: 'fa-solid fa-book-open',
