@@ -18,9 +18,9 @@ const GENRE_ICONS: Record<string, string> = {
   Fantasy: 'fa-solid fa-wand-sparkle',
   Horror: "fa solid fa-skull",
   Narrativa: 'fa-solid fa-feather',
-  Romanzo: 'fa-solid fa-book-open',
+  Romanzo: 'fa-solid fa-dungeon',
   Saggio: 'fa-solid fa-graduation-cap',
-  Storico: "fa solid fa-landmark",
+  Storico: "fa solid fa-building-columns",
   Thriller: 'fa-solid fa-heart-pulse',
 };
 
