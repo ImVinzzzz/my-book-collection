@@ -11,7 +11,7 @@ interface TagProps {
 /** Icone di default per i generi suggeriti. 
  *  Per quelli non in lista viene usata un'icona generica (fa-book). */
 const GENRE_ICONS: Record<string, string> = {
-  Avventura: 'fa-solid fa-compass',
+  Avventura: 'fa-solid fa-compass fa-shake',
   Epica: 'fa-solid fa-shield-halved',
   Fantascienza: 'fa-solid fa-rocket',
   Giallo: 'fa-solid fa-magnifying-glass fa-wag',
