@@ -14,12 +14,12 @@ interface BookCardProps {
 /** Icona del "sigillo" mostrato sopra la copertina, in base al genere. */
 export const GENRE_SEAL_ICONS: Record<string, string> = {
   Avventura: 'fa-solid fa-compass fa-shake',
-  Epica: 'fa-solid fa- fa-jello',
-  Fantascienza: 'fa-solid fa- fa-float',
+  Epica: 'fa-solid fa-shield-halved fa-jello',
+  Fantascienza: 'fa-solid fa-rocket fa-float',
   Giallo: 'fa-solid fa-magnifying-glass fa-wag',
   Fantasy: 'fa-solid fa-wand-sparkle fa-fade',
   Horror: "fa solid fa-ghost fa-float",
-  Narrativa: 'fa-solid fa--pointed fa-float',
+  Narrativa: 'fa-solid fa-feather-pointed fa-float',
   Romanzo: 'fa-solid fa-dungeon fa-jello',
   Saggio: 'fa-solid fa-graduation-cap fa-bounce',
   Storico: 'fa-solid fa-building-columns fa-float',
