@@ -40,7 +40,7 @@ export default function GenreGenerator(): ReactElement {
   }
 
   return (
-    <div className="min-h-screen bg-[#1C1410] text-[#F2E9DC]">
+    <div className="min-h-screen bg-[#1C1410]/90 text-[#F2E9DC]">
       <header className="border-b border-[#4A3526] bg-[#120D0A]">
         <div className="mx-auto max-w-4xl px-6 py-10">
           <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-[#B8A691] hover:text-[#6FC9BB]">

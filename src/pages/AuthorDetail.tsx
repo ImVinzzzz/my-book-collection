@@ -19,7 +19,7 @@ export default function AuthorDetail(): ReactElement {
 
   if (!author) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#1C1410] px-6 text-center text-[#F2E9DC]">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#1C1410]/90 px-6 text-center text-[#F2E9DC]">
         <i className="fa-solid fa-user-slash text-4xl text-[#3FA796]" aria-hidden="true" />
         <h1 className="font-display text-2xl font-bold">Autore non trovato</h1>
         <p className="text-[#B8A691]">Questo autore non esiste, o non è ancora stato archiviato.</p>
@@ -39,7 +39,7 @@ export default function AuthorDetail(): ReactElement {
     .sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <div className="min-h-screen bg-[#1C1410] text-[#F2E9DC]">
+    <div className="min-h-screen bg-[#1C1410]/90 text-[#F2E9DC]">
       <header className="border-b border-[#4A3526] bg-[#120D0A]">
         <div className="mx-auto max-w-6xl px-6 py-10 sm:py-14">
           <Link

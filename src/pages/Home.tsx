@@ -90,7 +90,7 @@ export default function Home(): ReactElement {
   }
 
   return (
-    <div className="min-h-screen bg-[#1C1410] text-[#F2E9DC]">
+    <div className="min-h-screen bg-[#1C1410]/90 text-[#F2E9DC]">
       {/* Intestazione */}
       <header className="border-b border-[#4A3526] bg-[#120D0A]">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 sm:py-14">
